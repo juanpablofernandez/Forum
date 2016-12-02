@@ -1,0 +1,2 @@
+module MainforumsHelper
+end

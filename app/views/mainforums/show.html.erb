@@ -1,0 +1,8 @@
+<h1>Show</h1>
+
+<%= @forum.title %><br />
+<%= @forum.description %><br />
+<br />
+<%= link_to "Back", root_path %>
+<%= link_to "Edit", edit_mainforum_path %>
+<%= link_to "Delete", mainforum_path(@forum), method: :delete, data: { confirm: "Are you sure?" } %>

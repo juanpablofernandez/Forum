@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-    resources :mainforums
-    resources :topics
     root 'mainforums#index'
+
+    resources :mainforums do
+        resources :topics
+    end
 end

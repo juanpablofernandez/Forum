@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202230759) do
+ActiveRecord::Schema.define(version: 20161204201046) do
 
   create_table "mainforums", force: :cascade do |t|
     t.string   "title"
@@ -20,10 +20,12 @@ ActiveRecord::Schema.define(version: 20161202230759) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "title"
     t.text     "description"
+    t.integer  "mainforum_id"
+    t.index ["mainforum_id"], name: "index_topics_on_mainforum_id"
   end
 
 end

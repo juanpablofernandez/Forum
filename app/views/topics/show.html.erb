@@ -2,6 +2,6 @@
 
 <%= @topic.description %><br />
 <br />
-<%= link_to "Back", topics_path %>
-<%= link_to "Edit", edit_topic_path %>
-<%= link_to "Delete", topic_path(@topic), method: :delete, data: { confirm: "Are you sure?" }  %>
+<%= link_to "Back", mainforum_path(@forum) %>
+<%= link_to "Edit", edit_mainforum_topic_path %>
+<%= link_to "Delete", mainforum_topic_path(@forum, @topic), method: :delete, data: { confirm: "Are you sure?" }  %>

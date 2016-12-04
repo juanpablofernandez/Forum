@@ -1,0 +1,8 @@
+<h1>Threads</h1>
+ <% @topics.each do |topic| %>
+    <h1><%= link_to topic.title, topic %></h1>
+    <%= topic.description %>
+ <% end %>
+<br />
+<br />
+ <%= link_to "New Thread", new_topic_path %>

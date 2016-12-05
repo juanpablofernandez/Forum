@@ -1,17 +1,16 @@
-<h1><%= @forum.title %><br /></h1>
+<h1><%= @forum.title %></h1>
 
 <%= @forum.description %><br />
 <br />
-<%= link_to "Back", root_path %>
-<%= link_to "Edit", edit_mainforum_path %>
+<%= link_to "Back", root_path %> |
+<%= link_to "Edit", edit_mainforum_path %> |
 <%= link_to "Delete", mainforum_path(@forum), method: :delete, data: { confirm: "Are you sure?" } %>
 
 <br>
-<h2>Forum Topics</h2>
 <% @forum.topics.each do |t| %>
-<%= link_to t.title, mainforum_topic_path(@forum, t) %><br>
-<%= t.description %><br>
-<br />
+<h2><%= link_to t.title, mainforum_topic_path(@forum, t) %></h2>
+<p><%= t.description %></p>
+<hr>
 <% end %>
-<%= link_to "New Thread", new_mainforum_topic_path(@forum) %><br>
-<br />
+
+<%= link_to "New Thread",  new_mainforum_topic_path(@forum, @topic) %>

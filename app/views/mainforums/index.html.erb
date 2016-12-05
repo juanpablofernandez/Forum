@@ -1,8 +1,5 @@
-<h1>Forums</h1>
-
 <% @forums.each do |forum| %>
     <h1><%= link_to forum.title, forum %><br /></h1>
     <p><%= forum.description %></p>
+    <hr>
 <% end %>
-
-<h3><%= link_to "New Forum", new_mainforum_path %></h3>

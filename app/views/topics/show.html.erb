@@ -1,7 +1,7 @@
-<h1><%= @topic.title %></h1><br />
+<h1><%= @topic.title %></h1>
 
-<%= @topic.description %><br />
+<p><%= @topic.description %></p>
 <br />
-<%= link_to "Back", mainforum_path(@forum) %>
-<%= link_to "Edit", edit_mainforum_topic_path %>
+<%= link_to "Back", mainforum_path(@forum) %> |
+<%= link_to "Edit", edit_mainforum_topic_path %> |
 <%= link_to "Delete", mainforum_topic_path(@forum, @topic), method: :delete, data: { confirm: "Are you sure?" }  %>

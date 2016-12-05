@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Forum</title>
-    <%= csrf_meta_tags %>
+    <head>
+        <title>Forum</title>
+        <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <body>
+
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-brand">
+                    <%= link_to "Home", root_path %>
+                </div>
+
+                <% if user_signed_in? %>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <%= link_to "New Forum", new_mainforum_path %>
+                        </li>
+                        <li>
+                            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                        </li>
+                    </ul>
+
+                <% else %>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <%= link_to "Sign Up", new_user_registration_path %>
+                        </li>
+                        <li>
+                            <%= link_to "Sign In", new_user_session_path %>
+                        </li>
+                    </ul>
+                <% end %>
+            </div>
+        </nav>
+
+        <div class="container">
+            <% flash.each do |name, msg| %>
+                <%= content_tag :div, msg, class: "alert" %>
+            <% end %>
+            <%= yield %>
+        </div>
+    </body>
 </html>

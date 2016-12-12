@@ -1,6 +1,8 @@
 class MainforumsController < ApplicationController
     before_action :find_forum, only: [:show, :edit, :update, :destroy]
-    before_filter :authenticate_user!, except: [:index, :show]
+
+    before_filter :check_user!, except: [:index, :show]
+    before_filter :check_admin!, except: [:index, :show]
 
     def index
         @forums = Mainforum.all

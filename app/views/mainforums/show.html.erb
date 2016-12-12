@@ -2,9 +2,11 @@
 
 <%= @forum.description %>
 <div style="float: right">
-    <%= link_to "Back", root_path %> |
-    <%= link_to "Edit", edit_mainforum_path %> |
-    <%= link_to "Delete", mainforum_path(@forum), method: :delete, data: { confirm: "Are you sure?" } %>
+    <%= link_to "Back", root_path %>
+    <% if current_user.try(:admin?) %>
+        | <%= link_to "Edit", edit_mainforum_path %> |
+        <%= link_to "Delete", mainforum_path(@forum), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
 </div>
 
 <br>
@@ -16,4 +18,6 @@
 <hr>
 <% end %>
 
-<%= link_to "New Thread",  new_mainforum_topic_path(@forum, @topic) %>
+<% if current_user.try(:admin?) %>
+    <%= link_to "New Thread",  new_mainforum_topic_path(@forum, @topic) %>
+<% end %>

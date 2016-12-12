@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
     before_action :find_topic, only: [:edit, :update, :destroy]
-    before_filter :authenticate_user!, except: [:index, :show]
+
+    before_filter :check_user!, except: [:index, :show]
+    before_filter :check_admin!, except: [:index, :show]
 
     def show
         @topic = Topic.find(params[:id])

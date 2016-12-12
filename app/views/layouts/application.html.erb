@@ -18,12 +18,18 @@
 
                 <% if user_signed_in? %>
                     <ul class="nav navbar-nav navbar-right">
+                        <% if current_user.try(:admin?) %>
+                            <li>
+                                <%= link_to "New Forum", new_mainforum_path %>
+                            </li>
+                        <% end %>
                         <li>
-                            <%= link_to "New Forum", new_mainforum_path %>
+                            <%= link_to current_user.email, edit_user_registration_path %>
                         </li>
                         <li>
                             <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
                         </li>
+
                     </ul>
 
                 <% else %>

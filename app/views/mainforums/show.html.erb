@@ -1,14 +1,17 @@
 <h1><%= @forum.title %></h1>
 
-<%= @forum.description %><br />
-<br />
-<%= link_to "Back", root_path %> |
-<%= link_to "Edit", edit_mainforum_path %> |
-<%= link_to "Delete", mainforum_path(@forum), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= @forum.description %>
+<div style="float: right">
+    <%= link_to "Back", root_path %> |
+    <%= link_to "Edit", edit_mainforum_path %> |
+    <%= link_to "Delete", mainforum_path(@forum), method: :delete, data: { confirm: "Are you sure?" } %>
+</div>
 
 <br>
+<br>
+<hr />
 <% @forum.topics.each do |t| %>
-<h2><%= link_to t.title, mainforum_topic_path(@forum, t) %></h2>
+<h3><%= link_to t.title, topic_path(t) %></h3>
 <p><%= t.description %></p>
 <hr>
 <% end %>

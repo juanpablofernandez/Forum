@@ -1,7 +1,8 @@
 class TopicsController < ApplicationController
-    before_action :find_topic, only: [:show, :edit, :update, :destroy]
+    before_action :find_topic, only: [:edit, :update, :destroy]
 
     def show
+        @topic = Topic.find(params[:id])
     end
 
     def new
@@ -14,7 +15,7 @@ class TopicsController < ApplicationController
         @topic = @forum.topics.build(topic_params)
         @topic.save
 
-        redirect_to mainforum_topic_path(@forum, @topic)
+        redirect_to topic_path(@topic)
     end
 
     def edit
@@ -22,7 +23,7 @@ class TopicsController < ApplicationController
 
     def update
         if @topic.update(topic_params)
-            redirect_to mainforum_topic_path(@forum, @topic), notice: "Topic was successfully updated!"
+            redirect_to topic_path(@topic), notice: "Topic was successfully updated!"
         else
             render 'edit'
         end
@@ -31,7 +32,7 @@ class TopicsController < ApplicationController
     def destroy
         @topic.destroy
 
-        redirect_to root_path
+        redirect_to mainforum_path(@forum)
     end
 
     private

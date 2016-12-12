@@ -3,6 +3,12 @@ Rails.application.routes.draw do
     root 'mainforums#index'
 
     resources :mainforums do
-        resources :topics
+        resources :topics, only: [:new, :create, :edit, :update, :destroy]
     end
+
+    resources :topics, only: [:show] do
+        resources :posts
+    end
+
+    
 end

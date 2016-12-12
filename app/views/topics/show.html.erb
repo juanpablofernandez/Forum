@@ -1,7 +1,18 @@
 <h1><%= @topic.title %></h1>
 
 <p><%= @topic.description %></p>
+<div style="float: right">
+    <%= link_to "Back", mainforum_path(@topic.mainforum) %> |
+    <%= link_to "Edit", edit_mainforum_topic_path(@topic.mainforum, @topic) %> |
+    <%= link_to "Delete", mainforum_topic_path(@topic.mainforum, @topic), method: :delete, data: { confirm: "Are you sure?" }  %>
+</div>
 <br />
-<%= link_to "Back", mainforum_path(@forum) %> |
-<%= link_to "Edit", edit_mainforum_topic_path %> |
-<%= link_to "Delete", mainforum_topic_path(@forum, @topic), method: :delete, data: { confirm: "Are you sure?" }  %>
+<br />
+<hr />
+<% @topic.posts.each do |post| %>
+    <h3><%= link_to post.title, topic_post_path(@topic, post) %></h3>
+    <p><%= post.body %></p>
+    <hr />
+<% end %>
+
+<%= link_to "New Post", new_topic_post_path(@topic) %>

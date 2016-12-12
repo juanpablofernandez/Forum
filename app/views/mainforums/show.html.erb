@@ -15,6 +15,7 @@
 <% @forum.topics.each do |t| %>
 <h3><%= link_to t.title, topic_path(t) %></h3>
 <p><%= t.description %></p>
+<p><%= t.posts.count %> Posts</p>
 <hr>
 <% end %>
 

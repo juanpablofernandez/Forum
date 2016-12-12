@@ -15,6 +15,7 @@
 <% @topic.posts.each do |post| %>
     <h3><%= link_to post.title, topic_post_path(@topic, post) %></h3>
     <p><%= post.body %></p>
+    <p>Submitted <%= time_ago_in_words(post.created_at) %> ago</p>
     <hr />
 <% end %>
 

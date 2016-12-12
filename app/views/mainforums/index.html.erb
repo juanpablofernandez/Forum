@@ -2,5 +2,12 @@
     <h1><%= link_to forum.title, forum %><br /></h1>
     <p><%= forum.description %></p>
     <p><%= forum.topics.count %> Threads</p>
+
+    <% postCount = 0 %>
+    <% forum.topics.each do |topic| %>
+        <% postCount += topic.posts.count %>
+    <% end %>
+    <p><%= postCount %> Posts</p>
+
     <hr>
 <% end %>
